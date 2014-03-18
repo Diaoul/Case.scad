@@ -8,9 +8,11 @@ rumba_mount_width = 2.2;  // additional space around the rumba holes
 screw_head_diameter = 5.4 + 0.5;
 screw_head_height = 3 + 0.5;
 write_text = true;
-text_thickness = 0.2;
-text_height = 2.2;
+text_thickness = 0.4;
+text_height = 2.8;
 text_spacing = 1;
+text_letter_spacing = 1.17;
+text_font = "Letters.dxf";
 
 // Uncomment for RUMBA
 inside_dimensions = [135, 75, 35];
@@ -19,32 +21,32 @@ pcb_mount_height = 2.2;
 pcb_holes_diameter = 3 + 0.5;
 pcb_mount_diameter = pcb_holes_diameter + 4;
 pcb_hole_positions = [[3.5, 3.5],
-                             [inside_dimensions[0] - 3.5, 3.5],
-                          [inside_dimensions[0] - 3.5, 3.5 + 35],
-                             [3.5, inside_dimensions[1] - 3.5]];
+                      [inside_dimensions[0] - 3.5, 3.5],
+                      [inside_dimensions[0] - 3.5, 3.5 + 35],
+                      [3.5, inside_dimensions[1] - 3.5]];
 pcb_connectors = [["HE0", "front", "cube", [33.1, 0, 0], 9.2, 6],  //name, side, kind, position, length, height
-                        ["HE1", "front", "cube", [43.1, 0, 0], 9.2, 6],
-                        ["HE2", "front", "cube", [53.1, 0, 0], 9.2, 6],
-                        ["FAN0", "front", "cube", [63.8, 0, 0], 6.45, 4.6],
-                        ["FAN1", "front", "cube", [70.85, 0, 0], 6.45, 4.6],
-                        ["PWR", "front", "cube", [97.4, 0, 0], 9.2, 6],
-                        ["HB-PWR", "front", "cube", [107.4, 0, 0], 9.2, 6],
-                        ["HB-OUT", "front", "cube", [117.4, 0, 0], 9.2, 6],
-                        ["USB", "left", "cube", [0, 9, -0.5], 10, 5],
-                        ["TEMPERATURES", "left", "cube", [0, 21.6, 10.5], 26, 3.5],
-                        ["ENDSTOPS", "left", "cube", [0, 51.4, 10.5], 16, 3.5],
-                        [undef, "back", "cube", [44.4, 0, 0], 14, 4.6],
-                        [undef, "back", "cube", [59.5, 0, 0], 14, 4.6],
-                        [undef, "back", "cube", [74.6, 0, 0], 14, 4.6],
-                        [undef, "back", "cube", [89.7, 0, 0], 14, 4.6],
-                        [undef, "back", "cube", [104.8, 0, 0], 14, 4.6],
-                        [undef, "back", "cube", [119.9, 0, 0], 14, 4.6],
-                        ["X", "back", "cube", [46, 0, 9.2], 10.8, 3.5],
-                        ["Y", "back", "cube", [61.1, 0, 9.2], 10.8, 3.5],
-                        ["Z", "back", "cube", [76.2, 0, 9.2], 10.8, 3.5],
-                        ["E0", "back", "cube", [91.3, 0, 9.2], 10.8, 3.5],
-                        ["E1", "back", "cube", [106.4, 0, 9.2], 10.8, 3.5],
-                        ["E2", "back", "cube", [121.5, 0, 9.2], 10.8, 3.5]];
+                  ["HE1", "front", "cube", [43.1, 0, 0], 9.2, 6],
+                  ["HE2", "front", "cube", [53.1, 0, 0], 9.2, 6],
+                  ["F0", "front", "cube", [63.8, 0, 0], 6.45, 4.6],
+                  ["F1", "front", "cube", [70.85, 0, 0], 6.45, 4.6],
+                  ["PWR", "front", "cube", [97.4, 0, 0], 9.2, 6],
+                  ["HB-P", "front", "cube", [107.4, 0, 0], 9.2, 6],
+                  ["HB-O", "front", "cube", [117.4, 0, 0], 9.2, 6],
+                  ["USB", "left", "cube", [0, 9, -0.5], 10, 5],
+                  ["TEMPERATURES", "left", "cube", [0, 21.6, 10.5], 26, 3.5],
+                  ["ENDSTOPS", "left", "cube", [0, 51.4, 10.5], 16, 3.5],
+                  [undef, "back", "cube", [44.4, 0, 0], 14, 4.6],
+                  [undef, "back", "cube", [59.5, 0, 0], 14, 4.6],
+                  [undef, "back", "cube", [74.6, 0, 0], 14, 4.6],
+                  [undef, "back", "cube", [89.7, 0, 0], 14, 4.6],
+                  [undef, "back", "cube", [104.8, 0, 0], 14, 4.6],
+                  [undef, "back", "cube", [119.9, 0, 0], 14, 4.6],
+                  ["X", "back", "cube", [46, 0, 9.2], 10.8, 3.5],
+                  ["Y", "back", "cube", [61.1, 0, 9.2], 10.8, 3.5],
+                  ["Z", "back", "cube", [76.2, 0, 9.2], 10.8, 3.5],
+                  ["E0", "back", "cube", [91.3, 0, 9.2], 10.8, 3.5],
+                  ["E1", "back", "cube", [106.4, 0, 9.2], 10.8, 3.5],
+                  ["E2", "back", "cube", [121.5, 0, 9.2], 10.8, 3.5]];
 
 use <Write/Write.scad>
 
@@ -60,27 +62,6 @@ module main() {
             // PCB mounts
             translate([wall_width + inside_extra_space, wall_width + inside_extra_space, bottom_thickness])
                 pcb_mounts(pcb_hole_positions, pcb_mount_height, pcb_mount_diameter);
-
-            // PCB connector text
-            translate([0, 0, bottom_thickness + pcb_mount_height + pcb_thickness]) {
-                for (pcb_connector = pcb_connectors) {
-                    if (write_text && pcb_connector[0] != undef && pcb_connector != "") {
-                        if (pcb_connector[1] == "front") {
-                            translate([wall_width + inside_extra_space + pcb_connector[4] / 2, 0, pcb_connector[5] + text_height/2 + text_spacing] + pcb_connector[3])
-                            rotate([90, 0, 0])
-                                write(pcb_connector[0], t=text_thickness, h=text_height, center=true);
-                        } else if (pcb_connector[1] == "left") {
-                            translate([0, wall_width + inside_extra_space + pcb_connector[4] / 2, pcb_connector[5] + text_height/2 + text_spacing] + pcb_connector[3])
-                            rotate([90, 0, -90])
-                                write(pcb_connector[0], t=text_thickness, h=text_height, center=true);
-                        } else if (pcb_connector[1] == "back") {
-                            translate([wall_width + inside_extra_space + pcb_connector[4] / 2, 2 * (wall_width + inside_extra_space) + inside_dimensions[1], pcb_connector[5] + text_height/2 + text_spacing] + pcb_connector[3])
-                            rotate([90, 0, 180])
-                                write(pcb_connector[0], t=text_thickness, h=text_height, center=true);
-                        }
-                    }
-                }
-            }
         }
 
         // PCB holes
@@ -112,34 +93,28 @@ module main() {
                         rotate([90, 90, 0]) cylinder(h=2, r=pcb_connector[4]);
                     }
                 }
-
-
-
-
-            }/*
-            // Right side (HE0 + HE1 + HE2 + FAN0 + FAN1 + MAIN-PWR + HB-PWR + HB-OUT)
-            translate([wall_width + inside_extra_space, 0, 0]) {
-                translate([0,0,40]) color("red") writecube("Hello", [33.1, 10, 10], 30);
-                pcb_connector([33.1, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([43.1, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([53.1, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([63.8, 0, 0], [6.45, wall_width, 4.8]);
-                pcb_connector([70.85, 0, 0], [6.45, wall_width, 4.8]);
-                pcb_connector([97.4, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([107.4, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([117.4, 0, 0], [9.2, wall_width, 6]);
             }
-            // Left side (motors)
-            translate([wall_width + inside_extra_space, inside_dimensions[1], 0]) {
-                pcb_connector([0, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([33.1, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([43.1, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([53.1, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([63.7, 0, 0], [13.5, wall_width, 4.8]);
-                pcb_connector([97.4, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([107.4, 0, 0], [9.2, wall_width, 6]);
-                pcb_connector([117.4, 0, 0], [9.2, wall_width, 6]);
-            }*/
+        }
+
+        // PCB connector text
+        translate([0, 0, bottom_thickness + pcb_mount_height + pcb_thickness]) {
+            for (pcb_connector = pcb_connectors) {
+                if (write_text && pcb_connector[0] != undef && pcb_connector != "") {
+                    if (pcb_connector[1] == "front") {
+                        translate([wall_width + inside_extra_space + pcb_connector[4] / 2, text_thickness / 2, pcb_connector[5] + text_height / 2 + text_spacing] + pcb_connector[3])
+                        rotate([90, 0, 0])
+                            write(pcb_connector[0], t=text_thickness, h=text_height, center=true, font=text_font, space=text_letter_spacing);
+                    } else if (pcb_connector[1] == "left") {
+                        translate([text_thickness / 2, wall_width + inside_extra_space + pcb_connector[4] / 2, pcb_connector[5] + text_height / 2 + text_spacing] + pcb_connector[3])
+                        rotate([90, 0, -90])
+                            write(pcb_connector[0], t=text_thickness, h=text_height, center=true, font=text_font, space=text_letter_spacing);
+                    } else if (pcb_connector[1] == "back") {
+                        translate([wall_width + inside_extra_space + pcb_connector[4] / 2, 2 * (wall_width + inside_extra_space) + inside_dimensions[1] - text_thickness / 2, pcb_connector[5] + text_height / 2 + text_spacing] + pcb_connector[3])
+                        rotate([90, 0, 180])
+                            write(pcb_connector[0], t=text_thickness, h=text_height, center=true, font=text_font, space=text_letter_spacing);
+                    }
+                }
+            }
         }
     }
 }
